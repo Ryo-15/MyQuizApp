@@ -11,4 +11,13 @@
     {q: 'What is C?', c: ['C0', 'C1', 'C2']},
   ];
   let currentNum = 0;
+
+  // 問題文の埋め込み
+  question.textContent = quizSet[currentNum].q;
+  // 選択肢の埋め込み
+  quizSet[currentNum].c.forEach(choice => {
+    const li = document.createElement('li');
+    li.textContent = choice;
+    choices.appendChild(li);
+  });
 }
