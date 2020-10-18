@@ -12,8 +12,7 @@
   ];
   let currentNum = 0;
 
-  // 問題文の埋め込み
-  question.textContent = quizSet[currentNum].q;
+
   // 問題をシャッフル(フィッシャー・イエーツ)
   function shuffle(arr) {
     for(let i = arr.length - 1; i > 0; i--) {
@@ -22,13 +21,32 @@
     }
     return arr;
   }
-  // 選択肢をシャッフル(元の選択肢はシャッフルされないようにする)
-  const shuffledChoices = shuffle([...quizSet[currentNum].c]);
-  console.log(quizSet[currentNum].c);
-  // 選択肢の埋め込み
-  shuffledChoices.forEach(choice => {
-    const li = document.createElement('li');
-    li.textContent = choice;
-    choices.appendChild(li);
-  });
+
+  function checkAnswer(li) {
+    if (li.textContent === quizSet[currentNum].c[0]) {
+      console.log('correct');
+    } else {
+      console.log('wrong');
+    }
+  }
+
+  // 問題のセット
+  function setQuiz() {
+    // 問題文の埋め込み
+    question.textContent = quizSet[currentNum].q;
+    // 選択肢をシャッフル(元の選択肢はシャッフルされないようにする)
+    const shuffledChoices = shuffle([...quizSet[currentNum].c]);
+    console.log(quizSet[currentNum].c);
+    // 選択肢の埋め込み
+    shuffledChoices.forEach(choice => {
+      const li = document.createElement('li');
+      li.textContent = choice;
+      li.addEventListener('click', () => {
+        checkAnswer(li);
+      });
+      choices.appendChild(li);
+    });
+  }
+
+  setQuiz();
 }
