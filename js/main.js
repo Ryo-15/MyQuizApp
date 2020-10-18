@@ -14,6 +14,14 @@
 
   // 問題文の埋め込み
   question.textContent = quizSet[currentNum].q;
+  // 問題をシャッフル(フィッシャー・イエーツ)
+  function shuffle(arr) {
+    for(let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[j], arr[i]] = [arr[i], arr[j]];
+    }
+    return arr;
+  }
   // 選択肢の埋め込み
   quizSet[currentNum].c.forEach(choice => {
     const li = document.createElement('li');
