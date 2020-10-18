@@ -22,8 +22,11 @@
     }
     return arr;
   }
+  // 選択肢をシャッフル(元の選択肢はシャッフルされないようにする)
+  const shuffledChoices = shuffle([...quizSet[currentNum].c]);
+  console.log(quizSet[currentNum].c);
   // 選択肢の埋め込み
-  quizSet[currentNum].c.forEach(choice => {
+  shuffledChoices.forEach(choice => {
     const li = document.createElement('li');
     li.textContent = choice;
     choices.appendChild(li);
