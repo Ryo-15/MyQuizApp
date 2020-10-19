@@ -7,11 +7,12 @@
   const result = document.getElementById('result');
   const scoreLabel = document.querySelector('#result > p');
 
-  const quizSet = [
-    {q: 'What is A?', c: ['A0', 'A1', 'A2']},
-    {q: 'What is B?', c: ['B0', 'B1', 'B2']},
-    {q: 'What is C?', c: ['C0', 'C1', 'C2']},
-  ];
+  // 問題を定義
+  const quizSet = shuffle([
+    {q: '世界で一番大きな湖は？', c: ['カスピ海', 'カリブ海', '琵琶湖']},
+    {q: '2の8乗は？', c: ['256', '64', '1024']},
+    {q: '次のうち最初にリリースされた言語は？', c: ['Pyhton', 'JavaScript', 'HTML']},
+  ]);
   let currentNum = 0;
   // 解答したか判定
   let isAnswered;
@@ -19,7 +20,7 @@
   let score = 0;
 
 
-  // 問題をシャッフル(フィッシャー・イエーツ)
+  // 選択肢をシャッフル(フィッシャー・イエーツ)
   function shuffle(arr) {
     for(let i = arr.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
