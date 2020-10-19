@@ -36,6 +36,8 @@
     } else {
       li.classList.add('wrong');
     }
+    // 解答後ボタンを青色にする
+    btn.classList.remove('disabled')
   }
 
   // 問題のセット
@@ -44,6 +46,10 @@
     isAnswered = false;
     // 問題文の埋め込み
     question.textContent = quizSet[currentNum].q;
+    // 前の問題の選択肢を削除
+    while(choices.firstChild) {
+      choices.removeChild(choices.firstChild);
+    }
     // 選択肢をシャッフル(元の選択肢はシャッフルされないようにする)
     const shuffledChoices = shuffle([...quizSet[currentNum].c]);
     console.log(quizSet[currentNum].c);
@@ -59,4 +65,9 @@
   }
 
   setQuiz();
+
+  btn.addEventListener('click', () => {
+    currentNum++;
+    setQuiz();
+  });
 }
