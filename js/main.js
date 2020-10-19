@@ -13,6 +13,8 @@
   let currentNum = 0;
   // 解答したか判定
   let isAnswered;
+  // scoreの定義
+  let score = 0;
 
 
   // 問題をシャッフル(フィッシャー・イエーツ)
@@ -33,6 +35,7 @@
     isAnswered = true;
     if (li.textContent === quizSet[currentNum].c[0]) {
       li.classList.add('correct');
+      score++;
     } else {
       li.classList.add('wrong');
     }
@@ -75,7 +78,12 @@
       return;
     }
     btn.classList.add('disabled');
-    currentNum++;
-    setQuiz();
+
+    if(currentNum === quizSet.length - 1) {
+      console.log(`Score: ${score} / ${quizSet.length}`);
+    } else {
+      currentNum++;
+      setQuiz();
+    }
   });
 }
