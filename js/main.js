@@ -11,6 +11,8 @@
     {q: 'What is C?', c: ['C0', 'C1', 'C2']},
   ];
   let currentNum = 0;
+  // 解答したか判定
+  let isAnswered;
 
 
   // 問題をシャッフル(フィッシャー・イエーツ)
@@ -23,6 +25,12 @@
   }
 
   function checkAnswer(li) {
+    // if (isAnswered === true) {
+    if (isAnswered) {
+      return;
+    }
+    // 解答した状態
+    isAnswered = true;
     if (li.textContent === quizSet[currentNum].c[0]) {
       li.classList.add('correct');
     } else {
@@ -32,6 +40,8 @@
 
   // 問題のセット
   function setQuiz() {
+    // 未解答状態
+    isAnswered = false;
     // 問題文の埋め込み
     question.textContent = quizSet[currentNum].q;
     // 選択肢をシャッフル(元の選択肢はシャッフルされないようにする)
