@@ -11,7 +11,7 @@
   const quizSet = shuffle([
     {q: '世界で一番大きな湖は？', c: ['カスピ海', 'カリブ海', '琵琶湖']},
     {q: '2の8乗は？', c: ['256', '64', '1024']},
-    {q: '次のうち最初にリリースされた言語は？', c: ['Pyhton', 'JavaScript', 'HTML']},
+    {q: '次のうち最初にリリースされた言語は？', c: ['Python', 'JavaScript', 'HTML']},
   ]);
   let currentNum = 0;
   // 解答したか判定
